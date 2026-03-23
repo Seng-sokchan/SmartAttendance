@@ -1,0 +1,51 @@
+### Variables — set @token after login
+@host = https://localhost:7125
+@token = paste_jwt_here
+
+### Login (public) — default seed admin: admin / Admin@123 (see appsettings SeedAdmin)
+POST {{host}}/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "Admin@123"
+}
+
+### Admin — create user (requires Admin JWT)
+POST {{host}}/api/admin/create-user
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "username": "jdoe",
+  "password": "User@123",
+  "role": "User"
+}
+
+### Admin — list users
+GET {{host}}/api/admin/users
+Authorization: Bearer {{token}}
+
+### Attendance — check-in (office: 11.5564, 104.9282 — within 100m)
+POST {{host}}/api/attendance/check-in
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "latitude": 11.5564,
+  "longitude": 104.9282
+}
+
+### Attendance — check-out (same; allowed only after 17:00 server local time per stored procedure)
+POST {{host}}/api/attendance/check-out
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "latitude": 11.5564,
+  "longitude": 104.9282
+}
+
+### Attendance — my records
+GET {{host}}/api/attendance/my-records
+Authorization: Bearer {{token}}

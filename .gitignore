@@ -1,0 +1,14 @@
+# ASP.NET
+.vs/
+bin/
+obj/
+*.user
+*.suo
+
+# Flutter
+.dart_tool/
+build/
+
+# Others
+*.log
+appsettings.Development.json

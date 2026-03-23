@@ -1,0 +1,12 @@
+@SmartAttendanceAPI_HostAddress = https://localhost:7125
+
+### Login
+POST {{SmartAttendanceAPI_HostAddress}}/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "Admin@123"
+}
+
+###
